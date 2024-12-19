@@ -1,0 +1,45 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Search</title>
+    <style>
+        /* CSS styles */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Product Search</h1>
+        <form action="/" method="POST">
+            <input type="text" name="query">
+            <button type="submit">Search</button>
+        </form>
+        
+        {% if search_result is not none and not search_result.empty %}
+            <h2>Search Result</h2>
+            <table>
+                <thead>
+                    <tr>
+                        {% for column in search_result.columns %}
+                        <th>{{ column }}</th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in search_result.itertuples() %}
+                    <tr>
+                        {% for value in row[1:] %}
+                        <td>{{ value }}</td>
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>No matching records found.</p>
+        {% endif %}
+    </div>
+</body>
+</html>
