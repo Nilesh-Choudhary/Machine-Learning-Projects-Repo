@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Airline Price Prediction</title>
+</head>
+<body>
+    <h1>Airline Price Prediction</h1>
+    <form action="/predict" method="POST">
+        <label for="airline">Airline:</label>
+        <select id="airline" name="airline">
+            <option value="Jet Airways">Jet Airways</option>
+            <option value="IndiGo">IndiGo</option>
+            <option value="Air India">Air India</option>
+            <option value="Multiple carriers">Multiple carriers</option>
+            <option value="SpiceJet">SpiceJet</option>
+            <option value="Vistara">Vistara</option>
+            <option value="Air Asia">Air Asia</option>
+            <option value="GoAir">GoAir</option>
+            <option value="Multiple carriers Premium economy">Multiple carriers Premium economy</option>
+            <option value="Jet Airways Business">Jet Airways Business</option>
+            <option value="Vistara Premium economy">Vistara Premium economy</option>
+            <option value="Trujet">Trujet</option>
+        </select>
+        <br>
+
+        <label for="source">Source:</label>
+        <select id="source" name="source">
+            <option value="Delhi">Delhi</option>
+            <option value="Kolkata">Kolkata</option>
+            <option value="Banglore">Banglore</option>
+            <option value="Mumbai">Mumbai</option>
+            <option value="Chennai">Chennai</option>
+        </select>
+        <br>
+
+        <label for="destination">Destination:</label>
+        <select id="destination" name="destination">
+            <option value="Cochin">Cochin</option>
+            <option value="Banglore">Banglore</option>
+            <option value="Delhi">Delhi</option>
+            <option value="New Delhi">New Delhi</option>
+            <option value="Hyderabad">Hyderabad</option>
+            <option value="Kolkata">Kolkata</option>
+        </select>
+        <br>
+
+        <label for="date_of_journey">Date of Journey (YYYY-MM-DD):</label>
+        <input type="date" id="date_of_journey" name="date_of_journey">
+        <br>
+
+        <label for="dep_time">Departure Time (HH:MM):</label>
+        <input type="time" id="dep_time" name="dep_time">
+        <br>
+
+        <label for="arrival_time">Arrival Time (HH:MM):</label>
+        <input type="time" id="arrival_time" name="arrival_time">
+        <br>
+
+        <label for="total_stops">Total Stops:</label>
+        <select id="total_stops" name="total_stops">
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+        <br>
+
+        <label for="duration">Duration (HH:MM):</label>
+        <input type="text" id="duration" name="duration" placeholder="HH:MM">
+        <br>
+
+        <input type="submit" value="Predict">
+    </form>
+
+    {% if prediction_text %}
+    <h2>{{ prediction_text }}</h2>
+    {% endif %}
+</body>
+</html>
