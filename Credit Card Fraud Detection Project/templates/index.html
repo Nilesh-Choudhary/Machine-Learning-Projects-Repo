@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Credit Card Fraud Detection</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">Credit Card Fraud Detection</h2>
+        <form action="{{ url_for('predict') }}" method="POST" class="border p-4 bg-light rounded">
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="cc_num">Credit Card Number:</label>
+                    <input type="number" class="form-control" name="cc_num" id="cc_num" required>
+                </div>
+                <div class="form-group col-md-6">
+    <label for="merchant">Merchant:</label>
+    <input type="text" class="form-control" name="merchant" id="merchant" required>
+</div>
+
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="category">Category:</label>
+                    <select class="form-control" name="category" id="category" required>
+                        {% for value in unique_values['category'] %}
+                            <option value="{{ value }}">{{ value }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="amt">Transaction Amount:</label>
+                    <input type="number" class="form-control" name="amt" id="amt" step="0.01" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="gender">Gender:</label>
+                    <select class="form-control" name="gender" id="gender" required>
+                        {% for value in unique_values['gender'] %}
+                            <option value="{{ value }}">{{ value }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="city">City:</label>
+                    <select class="form-control" name="city" id="city" required>
+                        {% for value in unique_values['city'] %}
+                            <option value="{{ value }}">{{ value }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="state">State:</label>
+                    <select class="form-control" name="state" id="state" required>
+                        {% for value in unique_values['state'] %}
+                            <option value="{{ value }}">{{ value }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="lat">Latitude:</label>
+                    <input type="number" class="form-control" name="lat" id="lat" step="0.0001" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="long">Longitude:</label>
+                    <input type="number" class="form-control" name="long" id="long" step="0.0001" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="city_pop">City Population:</label>
+                    <input type="number" class="form-control" name="city_pop" id="city_pop" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="job">Job:</label>
+                    <select class="form-control" name="job" id="job" required>
+                        {% for value in unique_values['job'] %}
+                            <option value="{{ value }}">{{ value }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="merch_lat">Merchant Latitude:</label>
+                    <input type="number" class="form-control" name="merch_lat" id="merch_lat" step="0.0001" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="merch_long">Merchant Longitude:</label>
+                    <input type="number" class="form-control" name="merch_long" id="merch_long" step="0.0001" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="date">Transaction Date:</label>
+                    <input type="date" class="form-control" name="date" id="date" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="birth_month">Birth Month:</label>
+                    <input type="number" class="form-control" name="birth_month" id="birth_month" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="age">Age:</label>
+                    <input type="number" class="form-control" name="age" id="age" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="zip">ZIP Code:</label>
+                    <input type="number" class="form-control" name="zip" id="zip" required>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block">Predict</button>
+        </form>
+    </div>
+</body>
+</html>
